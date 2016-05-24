@@ -1,6 +1,7 @@
 class EpisodesController < ApplicationController
 
   before_action :find_episode, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @episodes = Episode.all.order("created_at DESC")
@@ -15,7 +16,8 @@ class EpisodesController < ApplicationController
 
   def create
     @episode = Episode.new(episode_params)
-
+    @episode.user = current_user
+    
     if @episode.save
       redirect_to @episode
       flash[:success] = "Episode created successfully."

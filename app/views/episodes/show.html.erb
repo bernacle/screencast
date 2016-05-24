@@ -4,5 +4,8 @@
 </p>
 
 <%= link_to "Back", root_path, class: "btn btn-default" %>
-<%= link_to "Edit", edit_episode_path(@episode), class: "btn btn-default" %>
-<%= link_to "Delete", episode_path(@episode), method: :delete, class: "btn btn-default" %>
+
+<% if user_signed_in? && current_user == @episode.user%>
+  <%= link_to "Edit", edit_episode_path(@episode), class: "btn btn-default" %>
+  <%= link_to "Delete", episode_path(@episode), method: :delete, class: "btn btn-default" %>
+<% end %>
