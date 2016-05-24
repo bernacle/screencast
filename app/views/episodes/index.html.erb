@@ -1,0 +1,4 @@
+<h2>All Episodes</h2>
+<% @episodes.each do |episode| %>
+  <h3><%= link_to episode.title, episode%></h3>
+<% end %>
