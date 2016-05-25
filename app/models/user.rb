@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :episodes
+
+  def subscribed?
+    stripe_subscription_id?
+  end
 end
