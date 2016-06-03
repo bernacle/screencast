@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :episodes
   resource :subscription
+  resource :card
 
   root 'episodes#index'
 end
